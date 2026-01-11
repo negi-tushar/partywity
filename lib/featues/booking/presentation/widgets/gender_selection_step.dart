@@ -23,7 +23,7 @@ class GenderSelectionStep extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20),
-              _buildSummaryCard(totalGoal, remaining),
+              _buildSummaryCard(totalGoal, remaining,context),
               const SizedBox(height: 30),
               const Text(
                 "Select Male and Female Guest",
@@ -419,7 +419,7 @@ class GenderSelectionStep extends StatelessWidget {
     );
   }
 
-  Widget _buildSummaryCard(int total, int remaining) {
+  Widget _buildSummaryCard(int total, int remaining,BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
@@ -453,7 +453,9 @@ class GenderSelectionStep extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          const Icon(Icons.edit_note_outlined, color: Colors.grey, size: 28),
+          InkWell(
+            onTap: () =>  context.read<BookingBloc>().add(PreviousStep()),
+            child: const Icon(Icons.edit_note_outlined, color: Colors.black, size: 28)),
         ],
       ),
     );

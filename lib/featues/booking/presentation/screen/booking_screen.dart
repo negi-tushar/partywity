@@ -49,7 +49,7 @@ class _BookingScreenState extends State<BookingScreen> {
               );
             }
 
-            if (state.status == BookingStatus.success) {
+            if (state.status == BookingStatus.success && state is SubmitRegistration ) {
               ScaffoldMessenger.of(context).hideCurrentSnackBar();
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
